@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://fighters/trex/trex.tscn" type="PackedScene" id=1]
+[ext_resource path="res://maphitbox.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 320, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 40 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 64, 8 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 80, 8 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 8, 180 )
+
+[node name="stage" type="Node2D"]
+
+[node name="map_colliders" type="Node2D" parent="."]
+
+[node name="floor" type="StaticBody2D" parent="map_colliders"]
+position = Vector2( 320, 282 )
+
+[node name="collider" type="CollisionShape2D" parent="map_colliders/floor"]
+shape = SubResource( 1 )
+
+[node name="wall" type="StaticBody2D" parent="map_colliders"]
+position = Vector2( 8, 232 )
+
+[node name="collider" type="CollisionShape2D" parent="map_colliders/wall"]
+shape = SubResource( 2 )
+
+[node name="wall2" type="StaticBody2D" parent="map_colliders"]
+position = Vector2( 632, 232 )
+
+[node name="collider" type="CollisionShape2D" parent="map_colliders/wall2"]
+shape = SubResource( 2 )
+
+[node name="platform" type="StaticBody2D" parent="map_colliders"]
+position = Vector2( 144, 200 )
+
+[node name="collider" type="CollisionShape2D" parent="map_colliders/platform"]
+shape = SubResource( 3 )
+
+[node name="platform2" type="StaticBody2D" parent="map_colliders"]
+position = Vector2( 496, 200 )
+
+[node name="collider" type="CollisionShape2D" parent="map_colliders/platform2"]
+shape = SubResource( 3 )
+
+[node name="mid_platform" type="StaticBody2D" parent="map_colliders"]
+position = Vector2( 320, 136 )
+
+[node name="collider" type="CollisionShape2D" parent="map_colliders/mid_platform"]
+shape = SubResource( 4 )
+
+[node name="edge_wall" type="StaticBody2D" parent="map_colliders"]
+position = Vector2( -8, 180 )
+
+[node name="collider" type="CollisionShape2D" parent="map_colliders/edge_wall"]
+shape = SubResource( 5 )
+
+[node name="edge_wall2" type="StaticBody2D" parent="map_colliders"]
+position = Vector2( 648, 180 )
+
+[node name="collider" type="CollisionShape2D" parent="map_colliders/edge_wall2"]
+shape = SubResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 640.0
+margin_bottom = 360.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trex" parent="." instance=ExtResource( 1 )]
+position = Vector2( 103.314, 248.834 )
+
+[node name="trex2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 470.58, 255.764 )
+player = 2
