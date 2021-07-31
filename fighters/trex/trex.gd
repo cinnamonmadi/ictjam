@@ -18,6 +18,8 @@ onready var hurtbox_dair = $hurtbox/hurtbox_dair
 onready var sprite = $sprite
 
 const SPEED = 120
+const ACCEL = 20
+const DECCEL = 10
 const GRAVITY = 10
 const MAX_FALL_SPEED = 250
 const JUMP_IMPULSE = 250
@@ -40,6 +42,7 @@ var facing_direction = 1
 var grounded = false
 var has_double_jump = false
 var velocity = Vector2.ZERO
+var accel = Vector2.ZERO
 var crouching = false
 var uplooking = false
 var attack_state = ATTACK_NONE
@@ -54,6 +57,7 @@ var hurtbox_angle
 var hurtbox_damage
 
 var hitstun_alt = false
+var push_force = Vector2.ZERO
 
 func _ready():
     add_to_group("fighters")
@@ -144,20 +148,20 @@ func attack():
     velocity.x = 150 * facing_direction
     if uplooking and attack_state == ATTACK_NONE:
         attack_state = ATTACK_PUNCH_UP
-        start_hurtbox(80, 80, 10)
+        start_hurtbox(200, 80, 10)
     elif crouching and attack_state == ATTACK_NONE:
         attack_state = ATTACK_KICK
         start_hurtbox(40, 5, 5)
     elif not grounded and attack_state == ATTACK_NONE:
         if Input.is_action_pressed(INPUT_UP):
             attack_state = ATTACK_UPAIR
-            start_hurtbox(80, 80, 10)
+            start_hurtbox(200, 80, 10)
         elif Input.is_action_pressed(INPUT_DOWN):
             attack_state = ATTACK_DAIR
-            start_hurtbox(40, 80, 10)
+            start_hurtbox(50, 80, 10)
         else:
             attack_state = ATTACK_FAIR
-            start_hurtbox(40, 15, 5)
+            start_hurtbox(150, 30, 5)
     elif attack_state == ATTACK_NONE:
         attack_state = ATTACK_PUNCH_ONE
         start_hurtbox(5, 0, 5)
@@ -168,7 +172,7 @@ func attack():
         sprite.play("punch_two")
     elif attack_state == ATTACK_PUNCH_TWO:
         attack_state = ATTACK_PUNCH_THREE
-        start_hurtbox(80, 60, 10)
+        start_hurtbox(200, 45, 10)
         sprite.play("punch_three")
 
 func take_damage(facing, knockback, angle, damage):
@@ -177,19 +181,24 @@ func take_damage(facing, knockback, angle, damage):
 
     facing_direction = facing * -1
     velocity = Vector2.RIGHT.rotated(deg2rad(-angle)) * knockback
-    print("velocity is " + str(velocity))
 
     if hitstun_timer.is_stopped():
         hitstun_alt = false
     else:
         hitstun_alt = not hitstun_alt
-    var hitstun_duration = (knockback * 0.4) / 60.0
-    if hitstun_duration < 0.5:
-        hitstun_duration = 0.5
+    var hitstun_duration = knockback / 400.0
+    print(hitstun_duration)
+    if hitstun_duration < 0.3:
+        hitstun_duration = 0.3
     hitstun_timer.start(hitstun_duration)
 
     if health <= 0:
+        health = 0
         queue_free()
+
+func apply_push_force(source_force):
+    push_force.x = source_force.x * 100
+    push_force.y = 0
 
 func _physics_process(_delta):
     handle_input()
@@ -209,11 +218,13 @@ func _physics_process(_delta):
 
 func move():
     # Apply user input
+    var should_apply_push_force = true
     if crouching or uplooking or attack_state == ATTACK_KICK:
         velocity.x = 0
     elif hitstun_timer.is_stopped() and [ATTACK_NONE, ATTACK_FAIR, ATTACK_UPAIR, ATTACK_DAIR].has(attack_state):
         velocity.x = direction * SPEED
     elif attack_state != ATTACK_NONE:
+        should_apply_push_force = false
         velocity.x -= 50 * facing_direction
         if (velocity.x > 0 and facing_direction == -1) or (velocity.x < 0 and facing_direction == 1):
             velocity.x = 0
@@ -245,7 +256,21 @@ func move():
         velocity.y = MAX_FALL_SPEED
 
     # Perform movement
-    move_and_slide(velocity, Vector2(0, -1))
+    velocity += push_force
+    var _linear_velocity = move_and_slide(velocity, Vector2(0, -1))
+    push_force = Vector2.ZERO
+    if should_apply_push_force:
+        for fighter in get_tree().get_nodes_in_group("fighters"):
+            if fighter == self:
+                continue
+            var distance_to_fighter = position.distance_to(fighter.position)
+            if distance_to_fighter <= 20:
+                var push_force_percent = distance_to_fighter / 20
+                fighter.apply_push_force(position.direction_to(fighter.position) * push_force_percent)
+        for i in get_slide_count():
+            var collision = get_slide_collision(i)
+            if collision.collider.is_in_group("fighters"):
+                collision.collider.apply_push_force(position.direction_to(collision.collider.position))
 
 func jump():
     self.velocity.y = -JUMP_IMPULSE

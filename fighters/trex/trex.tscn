@@ -309,7 +309,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 15 )
+extents = Vector2( 6, 15 )
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 12, 3 )
@@ -330,6 +330,7 @@ extents = Vector2( 6, 6.5 )
 extents = Vector2( 10, 5 )
 
 [node name="trex" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="sprite" type="AnimatedSprite" parent="."]
