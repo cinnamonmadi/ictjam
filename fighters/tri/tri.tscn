@@ -1,0 +1,336 @@
+[gd_scene load_steps=62 format=2]
+
+[ext_resource path="res://fighters/tri/beefysaur_punch03.png" type="Texture" id=1]
+[ext_resource path="res://fighters/tri/beefysaur_jump.png" type="Texture" id=2]
+[ext_resource path="res://fighters/tri/beefysaur_punch01.png" type="Texture" id=3]
+[ext_resource path="res://fighters/tri/beefysaur_run.png" type="Texture" id=4]
+[ext_resource path="res://fighters/tri/beefysaur_idle.png" type="Texture" id=5]
+[ext_resource path="res://fighters/tri/beefysaur_punch02.png" type="Texture" id=6]
+[ext_resource path="res://fighters/tri/beefysaur_hurtframe.png" type="Texture" id=7]
+[ext_resource path="res://fighters/tri/beefysaur_lookup.png" type="Texture" id=8]
+[ext_resource path="res://fighters/tri/beefysaur_crouch.png" type="Texture" id=9]
+[ext_resource path="res://fighters/tri/beefysaur_uphit.png" type="Texture" id=10]
+[ext_resource path="res://fighters/trex/trex.gd" type="Script" id=11]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 42, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 84, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 126, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 10 )
+region = Rect2( 42, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 10 )
+region = Rect2( 84, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 10 )
+region = Rect2( 126, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 7 )
+region = Rect2( 42, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 42, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 84, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 4 )
+region = Rect2( 126, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 4 )
+region = Rect2( 168, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 4 )
+region = Rect2( 210, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 4 )
+region = Rect2( 252, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 4 )
+region = Rect2( 294, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 58, 28 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
+region = Rect2( 58, 0, 58, 28 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 116, 0, 58, 28 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 1 )
+region = Rect2( 174, 0, 58, 28 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 1 )
+region = Rect2( 232, 0, 58, 28 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 58, 28 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 3 )
+region = Rect2( 58, 0, 58, 28 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 3 )
+region = Rect2( 116, 0, 58, 28 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 3 )
+region = Rect2( 174, 0, 58, 28 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 2 )
+region = Rect2( 42, 0, 42, 28 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 54, 28 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 6 )
+region = Rect2( 54, 0, 54, 28 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 6 )
+region = Rect2( 108, 0, 54, 28 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 6 )
+region = Rect2( 162, 0, 54, 28 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ) ],
+"loop": true,
+"name": "punch_up",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 30 ) ],
+"loop": true,
+"name": "hurt_two",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 31 ) ],
+"loop": true,
+"name": "hurt_one",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 32 ) ],
+"loop": true,
+"name": "uplook",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "punch_three",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 33 ) ],
+"loop": true,
+"name": "crouch",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 34 ) ],
+"loop": true,
+"name": "fair",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 35 ) ],
+"loop": true,
+"name": "dair",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 36 ) ],
+"loop": true,
+"name": "upair",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 37 ) ],
+"loop": true,
+"name": "kick",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"loop": true,
+"name": "punch_one",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 24 ) ],
+"loop": true,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
+"loop": true,
+"name": "punch_two",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=42]
+extents = Vector2( 12, 8 )
+
+[sub_resource type="RectangleShape2D" id=43]
+extents = Vector2( 12, 6 )
+
+[sub_resource type="RectangleShape2D" id=44]
+extents = Vector2( 11, 7 )
+
+[sub_resource type="RectangleShape2D" id=45]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="RectangleShape2D" id=46]
+
+[sub_resource type="RectangleShape2D" id=47]
+
+[sub_resource type="RectangleShape2D" id=48]
+
+[sub_resource type="RectangleShape2D" id=49]
+
+[sub_resource type="RectangleShape2D" id=50]
+
+[sub_resource type="RectangleShape2D" id=51]
+
+[node name="tri" type="KinematicBody2D"]
+script = ExtResource( 11 )
+SPEED = 100
+PUNCH_COMBO_IMPULSE = 100
+PUNCH_COMBO_DECCEL = 34
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "punch_up"
+offset = Vector2( 0, -6 )
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2( 3, 0 )
+shape = SubResource( 42 )
+
+[node name="hitbox_crouching" type="CollisionShape2D" parent="."]
+position = Vector2( 3, 2 )
+shape = SubResource( 43 )
+
+[node name="coyote_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="jump_input_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="hitstun_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="hurtbox" type="Area2D" parent="."]
+
+[node name="hurtbox_right" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2( 15, -5 )
+shape = SubResource( 44 )
+
+[node name="hurtbox_left" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2( -15, -5 )
+shape = SubResource( 44 )
+
+[node name="hurtbox_up" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2( 3, -12 )
+shape = SubResource( 45 )
+
+[node name="hurtbox_kick_right" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource( 46 )
+
+[node name="hurtbox_kick_left" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource( 47 )
+
+[node name="hurtbox_fair_right" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource( 48 )
+
+[node name="hurtbox_fair_left" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource( 49 )
+
+[node name="hurtbox_upair" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource( 50 )
+
+[node name="hurtbox_dair" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource( 51 )
