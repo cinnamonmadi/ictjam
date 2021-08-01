@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://maphitbox.png" type="Texture" id=2]
+[ext_resource path="res://map.png" type="Texture" id=1]
 [ext_resource path="res://main.gd" type="Script" id=3]
 [ext_resource path="res://menu/title.png" type="Texture" id=5]
 [ext_resource path="res://african.ttf" type="DynamicFontData" id=6]
@@ -22,7 +22,34 @@ extents = Vector2( 80, 8 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 8, 180 )
 
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 640, 360 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 640, 0, 640, 360 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 1280, 0, 640, 360 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
 [sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 14
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=7]
@@ -82,13 +109,12 @@ position = Vector2( 648, 180 )
 [node name="collider" type="CollisionShape2D" parent="map_colliders/edge_wall2"]
 shape = SubResource( 5 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 640.0
-margin_bottom = 360.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="background" type="AnimatedSprite" parent="."]
+position = Vector2( 320, 180 )
+z_index = -2
+frames = SubResource( 12 )
+frame = 1
+playing = true
 
 [node name="start_menu" type="Control" parent="."]
 visible = false
@@ -179,6 +205,157 @@ size_flags_vertical = 2
 texture = ExtResource( 8 )
 stretch_mode = 1
 
+[node name="player_boxes" type="HBoxContainer" parent="select_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.0
+margin_top = 100.0
+margin_right = 165.0
+margin_bottom = 170.0
+custom_constants/separation = 130
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="p1_box" type="Panel" parent="select_menu/player_boxes"]
+margin_left = 15.0
+margin_right = 15.0
+margin_bottom = 70.0
+
+[node name="bg" type="ColorRect" parent="select_menu/player_boxes/p1_box"]
+margin_right = 110.0
+margin_bottom = 70.0
+color = Color( 0, 0, 0, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="select_menu/player_boxes/p1_box"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 8 )
+text = "Press Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture" type="TextureRect" parent="select_menu/player_boxes/p1_box"]
+margin_left = 5.0
+margin_top = 20.0
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="p1_box2" type="Panel" parent="select_menu/player_boxes"]
+margin_left = 145.0
+margin_right = 145.0
+margin_bottom = 70.0
+
+[node name="bg" type="ColorRect" parent="select_menu/player_boxes/p1_box2"]
+margin_right = 110.0
+margin_bottom = 70.0
+color = Color( 0, 0, 0, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="select_menu/player_boxes/p1_box2"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 8 )
+text = "Player 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture" type="TextureRect" parent="select_menu/player_boxes/p1_box2"]
+margin_left = 5.0
+margin_top = 20.0
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="p1_box3" type="Panel" parent="select_menu/player_boxes"]
+margin_left = 275.0
+margin_right = 275.0
+margin_bottom = 70.0
+
+[node name="bg" type="ColorRect" parent="select_menu/player_boxes/p1_box3"]
+margin_right = 110.0
+margin_bottom = 70.0
+color = Color( 0, 0, 0, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="select_menu/player_boxes/p1_box3"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 8 )
+text = "Player 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture" type="TextureRect" parent="select_menu/player_boxes/p1_box3"]
+margin_left = 5.0
+margin_top = 20.0
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="p1_box4" type="Panel" parent="select_menu/player_boxes"]
+margin_left = 405.0
+margin_right = 405.0
+margin_bottom = 70.0
+
+[node name="bg" type="ColorRect" parent="select_menu/player_boxes/p1_box4"]
+margin_right = 110.0
+margin_bottom = 70.0
+color = Color( 0, 0, 0, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="select_menu/player_boxes/p1_box4"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 8 )
+text = "Player 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture" type="TextureRect" parent="select_menu/player_boxes/p1_box4"]
+margin_left = 5.0
+margin_top = 20.0
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="general" type="Control" parent="."]
 margin_right = 640.0
 margin_bottom = 360.0
@@ -213,6 +390,86 @@ __meta__ = {
 
 [node name="general_timer" type="Timer" parent="general"]
 one_shot = true
+
+[node name="health_boxes" type="HBoxContainer" parent="general"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.0
+margin_top = 100.0
+margin_right = 165.0
+margin_bottom = 170.0
+custom_constants/separation = 130
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="p1_box" type="Panel" parent="general/health_boxes"]
+margin_left = 15.0
+margin_right = 15.0
+margin_bottom = 70.0
+
+[node name="label" type="Label" parent="general/health_boxes/p1_box"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 8 )
+text = "PLAYER 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="p1_box2" type="Panel" parent="general/health_boxes"]
+margin_left = 145.0
+margin_right = 145.0
+margin_bottom = 70.0
+
+[node name="label" type="Label" parent="general/health_boxes/p1_box2"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 8 )
+text = "Player 2
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="p1_box3" type="Panel" parent="general/health_boxes"]
+margin_left = 275.0
+margin_right = 275.0
+margin_bottom = 70.0
+
+[node name="label" type="Label" parent="general/health_boxes/p1_box3"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 8 )
+text = "Player 3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="p1_box4" type="Panel" parent="general/health_boxes"]
+margin_left = 405.0
+margin_right = 405.0
+margin_bottom = 70.0
+
+[node name="label" type="Label" parent="general/health_boxes/p1_box4"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 8 )
+text = "Player 4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="spawn_points" type="Node2D" parent="."]
 

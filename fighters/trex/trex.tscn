@@ -333,13 +333,12 @@ extents = Vector2( 10, 5 )
 collision_layer = 2
 script = ExtResource( 1 )
 shader_path = "res://fighters/trex/trex.shader"
+death_path = "res://fighters/trex/trex_death.tscn"
 
 [node name="sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -1 )
 frames = SubResource( 53 )
-animation = "run"
-frame = 5
-playing = true
+animation = "idle"
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource( 54 )

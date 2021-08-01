@@ -20,7 +20,11 @@ onready var hurtbox_dair = $hurtbox/hurtbox_dair
 onready var sprite = $sprite
 
 export var player_name = "p1"
+var player_number
 export var shader_path = ""
+export var death_path = ""
+
+var death_scene
 
 export var SPEED = 150
 export var PUNCH_COMBO_IMPULSE = 150
@@ -43,6 +47,9 @@ var INPUT_DOWN
 var INPUT_JUMP
 var INPUT_ATTACK
 var INPUT_SPECIAL
+
+export var damage_scale = 1.0
+export var defense_scale = 1.0
 
 enum { ATTACK_NONE, ATTACK_PUNCH_ONE, ATTACK_PUNCH_TWO, ATTACK_PUNCH_THREE, ATTACK_PUNCH_UP, ATTACK_KICK, ATTACK_FAIR, ATTACK_UPAIR, ATTACK_DAIR }
 
@@ -73,6 +80,7 @@ func _ready():
     add_to_group("fighters")
 
     sprite.connect("animation_finished", self, "_on_animation_finished")
+    death_scene = load(death_path)
 
     hurtbox_ignores = [self]
     set_player()
@@ -89,7 +97,6 @@ func set_player():
     var shader = load(shader_path).duplicate(true)
     sprite.material = ShaderMaterial.new()
     sprite.material.shader = shader
-    var player_number = int(player_name.substr(1, 1))
     sprite.material.set_shader_param("player", player_number)
 
 func get_standing_y_extents():
@@ -99,12 +106,15 @@ func start_hurtbox(knockback, angle, damage):
     hurtbox_enabled = true
     hurtbox_ignores = [self]
 
-    hurtbox_knockback = knockback
+    hurtbox_knockback = int(damage_scale * knockback)
     if facing_direction == -1:
         hurtbox_angle = 180 - angle
     else:
         hurtbox_angle = angle
-    hurtbox_damage = damage
+    var effective_damage_scale = damage_scale
+    if not grounded:
+        effective_damage_scale = 1.0
+    hurtbox_damage = int(effective_damage_scale * damage)
 
     for child_hurtbox in hurtbox.get_children():
         child_hurtbox.disabled = true
@@ -198,7 +208,8 @@ func attack():
         velocity.x = PUNCH_COMBO_IMPULSE * facing_direction
 
 func take_damage(facing, knockback, angle, damage):
-    health -= damage
+    health -= int(damage * defense_scale)
+    attack_state = ATTACK_NONE
 
     facing_direction = facing * -1
     velocity = Vector2.RIGHT.rotated(deg2rad(-angle)) * knockback
@@ -208,13 +219,22 @@ func take_damage(facing, knockback, angle, damage):
     else:
         hitstun_alt = not hitstun_alt
     var hitstun_duration = knockback / 400.0
-    print(hitstun_duration)
     if hitstun_duration < 0.3:
         hitstun_duration = 0.3
     hitstun_timer.start(hitstun_duration)
 
     if health <= 0:
         health = 0
+
+        var death = death_scene.instance()
+        death.position = position
+        death.flip_h = sprite.flip_h
+        var shader = load(shader_path).duplicate(true)
+        death.material = ShaderMaterial.new()
+        death.material.shader = shader
+        death.material.set_shader_param("player", player_number)
+        get_parent().add_child(death)
+
         emit_signal("death")
         queue_free()
 
@@ -347,7 +367,7 @@ func update_sprite():
         sprite.play("crouch")
     elif uplooking:
         sprite.play("uplook")
-    elif direction == 0:
+    elif velocity.x == 0:
         sprite.play("idle")
     else:
         sprite.play("run")

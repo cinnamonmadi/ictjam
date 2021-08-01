@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://fighters/tri/beefysaur_punch03.png" type="Texture" id=1]
 [ext_resource path="res://fighters/tri/beefysaur_jump.png" type="Texture" id=2]
@@ -11,6 +11,10 @@
 [ext_resource path="res://fighters/tri/beefysaur_crouch.png" type="Texture" id=9]
 [ext_resource path="res://fighters/tri/beefysaur_uphit.png" type="Texture" id=10]
 [ext_resource path="res://fighters/trex/trex.gd" type="Script" id=11]
+[ext_resource path="res://fighters/tri/beefysaur_fair.png" type="Texture" id=12]
+[ext_resource path="res://fighters/tri/beefysaur_dair.png" type="Texture" id=13]
+[ext_resource path="res://fighters/tri/beefysaur_upair.png" type="Texture" id=14]
+[ext_resource path="res://fighters/tri/beefysaur_downhit.png" type="Texture" id=15]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 5 )
@@ -116,21 +120,69 @@ region = Rect2( 232, 0, 58, 28 )
 atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 42, 28 )
 
-[sub_resource type="AtlasTexture" id=34]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 42, 28 )
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 54, 28 )
 
-[sub_resource type="AtlasTexture" id=35]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 42, 28 )
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 12 )
+region = Rect2( 54, 0, 54, 28 )
 
-[sub_resource type="AtlasTexture" id=36]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 42, 28 )
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 12 )
+region = Rect2( 108, 0, 54, 28 )
 
-[sub_resource type="AtlasTexture" id=37]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 42, 28 )
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 12 )
+region = Rect2( 162, 0, 54, 28 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 42, 44 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 13 )
+region = Rect2( 42, 0, 42, 44 )
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 13 )
+region = Rect2( 84, 0, 42, 44 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 13 )
+region = Rect2( 126, 0, 42, 44 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 42, 44 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 14 )
+region = Rect2( 42, 0, 42, 44 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 14 )
+region = Rect2( 84, 0, 42, 44 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 14 )
+region = Rect2( 126, 0, 42, 44 )
+
+[sub_resource type="AtlasTexture" id=64]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 48, 28 )
+
+[sub_resource type="AtlasTexture" id=65]
+atlas = ExtResource( 15 )
+region = Rect2( 48, 0, 48, 28 )
+
+[sub_resource type="AtlasTexture" id=66]
+atlas = ExtResource( 15 )
+region = Rect2( 96, 0, 48, 28 )
+
+[sub_resource type="AtlasTexture" id=67]
+atlas = ExtResource( 15 )
+region = Rect2( 144, 0, 48, 28 )
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 3 )
@@ -183,7 +235,7 @@ animations = [ {
 "frames": [ SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ) ],
 "loop": true,
 "name": "punch_up",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [ SubResource( 30 ) ],
 "loop": true,
@@ -208,29 +260,29 @@ animations = [ {
 "frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
 "loop": true,
 "name": "punch_three",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [ SubResource( 33 ) ],
 "loop": true,
 "name": "crouch",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 34 ) ],
+"frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
 "name": "fair",
-"speed": 5.0
+"speed": 10.0
 }, {
-"frames": [ SubResource( 35 ) ],
+"frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
 "name": "dair",
-"speed": 5.0
+"speed": 10.0
 }, {
-"frames": [ SubResource( 36 ) ],
+"frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
 "name": "upair",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 37 ) ],
+"frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
 "loop": true,
 "name": "kick",
 "speed": 5.0
@@ -238,7 +290,7 @@ animations = [ {
 "frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
 "name": "punch_one",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [ SubResource( 24 ) ],
 "loop": true,
@@ -248,14 +300,14 @@ animations = [ {
 "frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
 "loop": true,
 "name": "punch_two",
-"speed": 10.0
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=42]
 extents = Vector2( 12, 8 )
 
 [sub_resource type="RectangleShape2D" id=43]
-extents = Vector2( 12, 6 )
+extents = Vector2( 12, 3 )
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 11, 7 )
@@ -264,23 +316,27 @@ extents = Vector2( 11, 7 )
 extents = Vector2( 16, 8 )
 
 [sub_resource type="RectangleShape2D" id=46]
-
-[sub_resource type="RectangleShape2D" id=47]
+extents = Vector2( 12, 7 )
 
 [sub_resource type="RectangleShape2D" id=48]
-
-[sub_resource type="RectangleShape2D" id=49]
-
-[sub_resource type="RectangleShape2D" id=50]
+extents = Vector2( 10, 9.5 )
 
 [sub_resource type="RectangleShape2D" id=51]
+extents = Vector2( 11, 6 )
+
+[sub_resource type="RectangleShape2D" id=68]
+extents = Vector2( 14, 6 )
 
 [node name="tri" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 11 )
 shader_path = "res://fighters/tri/tri.shader"
+death_path = "res://fighters/tri/tri_death.tscn"
 SPEED = 100
-PUNCH_COMBO_IMPULSE = 100
-PUNCH_COMBO_DECCEL = 34
+PUNCH_COMBO_IMPULSE = 200
+PUNCH_COMBO_DECCEL = 67
+damage_scale = 1.5
+defense_scale = 0.75
 
 [node name="sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
@@ -288,12 +344,12 @@ animation = "idle"
 offset = Vector2( 0, -6 )
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 3, 0 )
 shape = SubResource( 42 )
 
 [node name="hitbox_crouching" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 3, 2 )
+position = Vector2( 3, 5 )
 shape = SubResource( 43 )
 
 [node name="coyote_timer" type="Timer" parent="."]
@@ -306,34 +362,46 @@ one_shot = true
 one_shot = true
 
 [node name="hurtbox" type="Area2D" parent="."]
-visible = false
 
 [node name="hurtbox_right" type="CollisionShape2D" parent="hurtbox"]
+visible = false
 position = Vector2( 15, -5 )
 shape = SubResource( 44 )
 
 [node name="hurtbox_left" type="CollisionShape2D" parent="hurtbox"]
+visible = false
 position = Vector2( -15, -5 )
 shape = SubResource( 44 )
 
 [node name="hurtbox_up" type="CollisionShape2D" parent="hurtbox"]
+visible = false
 position = Vector2( 3, -12 )
 shape = SubResource( 45 )
 
 [node name="hurtbox_kick_right" type="CollisionShape2D" parent="hurtbox"]
+visible = false
+position = Vector2( 12, 1 )
 shape = SubResource( 46 )
 
 [node name="hurtbox_kick_left" type="CollisionShape2D" parent="hurtbox"]
-shape = SubResource( 47 )
+visible = false
+position = Vector2( -12, 1 )
+shape = SubResource( 46 )
 
 [node name="hurtbox_fair_right" type="CollisionShape2D" parent="hurtbox"]
+visible = false
+position = Vector2( 17, -3.5 )
 shape = SubResource( 48 )
 
 [node name="hurtbox_fair_left" type="CollisionShape2D" parent="hurtbox"]
-shape = SubResource( 49 )
-
-[node name="hurtbox_upair" type="CollisionShape2D" parent="hurtbox"]
-shape = SubResource( 50 )
+visible = false
+position = Vector2( -17, -3.5 )
+shape = SubResource( 48 )
 
 [node name="hurtbox_dair" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2( 0, 9 )
 shape = SubResource( 51 )
+
+[node name="hurtbox_upair" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2( 0, -22 )
+shape = SubResource( 68 )
