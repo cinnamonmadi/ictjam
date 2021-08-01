@@ -20,6 +20,7 @@ onready var hurtbox_dair = $hurtbox/hurtbox_dair
 onready var sprite = $sprite
 
 export var player_name = "p1"
+export var shader_path = ""
 
 export var SPEED = 150
 export var PUNCH_COMBO_IMPULSE = 150
@@ -84,6 +85,12 @@ func set_player():
     INPUT_JUMP = player_name + "_jump"
     INPUT_ATTACK = player_name + "_attack"
     INPUT_SPECIAL = player_name + "_special"
+
+    var shader = load(shader_path).duplicate(true)
+    sprite.material = ShaderMaterial.new()
+    sprite.material.shader = shader
+    var player_number = int(player_name.substr(1, 1))
+    sprite.material.set_shader_param("player", player_number)
 
 func get_standing_y_extents():
     return $hitbox.shape.extents.y

@@ -10,7 +10,7 @@ var player_selections = []
 var player_locked = []
 var player_colors = []
 var players = []
-var player_colors_list = [Color(1.0, 0.0, 0.0), Color(0.0, 0.0, 1.0), Color(0.0, 0.0, 1.0), Color(1.0, 1.0, 0.0)]
+var player_colors_list = [Color(1.0, 0.0, 0.0), Color(0.0, 0.0, 1.0), Color(1.0, 0.0, 1.0), Color(1.0, 1.0, 0.0)]
 
 onready var start_menu = $start_menu
 onready var start_label = $start_menu/start_label

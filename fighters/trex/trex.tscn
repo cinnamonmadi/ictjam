@@ -332,11 +332,13 @@ extents = Vector2( 10, 5 )
 [node name="trex" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 1 )
+shader_path = "res://fighters/trex/trex.shader"
 
 [node name="sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -1 )
 frames = SubResource( 53 )
-animation = "idle"
+animation = "run"
+frame = 5
 playing = true
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
